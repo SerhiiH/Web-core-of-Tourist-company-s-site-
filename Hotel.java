@@ -1,5 +1,3 @@
-package Hotel;
-
 /**
  * Created by Сергей on 26.02.2017.
  */
