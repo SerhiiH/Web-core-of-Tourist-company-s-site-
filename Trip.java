@@ -1,5 +1,3 @@
-import Hotel.Hotel;
-
 /**
  * Created by Сергей on 25.02.2017.
  */
