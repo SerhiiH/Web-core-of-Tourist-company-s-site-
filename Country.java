@@ -5,6 +5,6 @@ public enum Country {
     NONE, PORTUGAL, SPAIN, FRANCE, ITALY;
 
     public static Country getCountry(int ind) {
-        return Country.values()[ind - 1];
+        return Country.values()[ind];
     }
 }
