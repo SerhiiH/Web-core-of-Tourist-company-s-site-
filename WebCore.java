@@ -10,8 +10,7 @@ public class WebCore {
     private Trips allTrips;
     private Trips selectedTrips;
     private final Hotels allHotels;
-    private boolean firstFiltering;
-    private boolean firstSorting;
+    private boolean firstOperation;
 
 
     private WebCore() {
@@ -19,10 +18,9 @@ public class WebCore {
         input = 1;
         cores = new InternalCores();
         allHotels = new Hotels();
-        allTrips = new Trips();
+        allTrips = new Trips(1);
         selectedTrips = new Trips();
-        firstFiltering = true;
-        firstSorting = true;
+        firstOperation = true;
     }
     public static WebCore newWebCore() { return new WebCore(); }
     public void perform() {
@@ -117,9 +115,9 @@ public class WebCore {
             }
             public void specifyParameter() { parameters.getParameter(input).specifyParameter(); }
             public void modifyTrips() {
-                if(firstFiltering) {
+                if(firstOperation) {
                     selectedTrips = allTrips.filterTrips(parameters.getParameter(input));
-                    firstFiltering = false;
+                    firstOperation = false;
                 }
                 else
                     selectedTrips = selectedTrips.filterTrips(parameters.getParameter(input));
@@ -189,9 +187,9 @@ public class WebCore {
                 } while(inputTwo < 0 || inputTwo > 2);
             }
             public void modifyTrips() {
-                if(firstSorting) {
+                if(firstOperation) {
                     selectedTrips = allTrips.sortTrips(parameters.getParameter(inputOne, inputTwo));
-                    firstSorting = false;
+                    firstOperation = false;
                 }
                 else
                     selectedTrips = selectedTrips.sortTrips(parameters.getParameter(inputOne, inputTwo));
